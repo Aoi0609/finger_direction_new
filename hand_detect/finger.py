@@ -2,10 +2,10 @@ import cv2
 import mediapipe as mp
 
 
-def finger_direction():
+def finger_direction(camera_id=0):
     mp_drawing = mp.solutions.drawing_utils
     mp_hands = mp.solutions.hands
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(camera_id)
     with mp_hands.Hands(
             max_num_hands=2,
             min_detection_confidence=0.5,

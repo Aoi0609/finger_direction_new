@@ -10,7 +10,7 @@ pip install git+https://github.com/rionehome/finger_direction
 
 
 ```python
-from finger_direction import finger_direction
+from hand_detect import finger_direction
 
 # args : camera_id (default: 0)
 # yield : direction ("R" | "L" | None)
