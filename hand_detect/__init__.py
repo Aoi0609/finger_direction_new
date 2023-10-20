@@ -1,1 +1,1 @@
-from finger import finger_detect
+from hand_detect.finger import *
