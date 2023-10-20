@@ -5,7 +5,7 @@ import mediapipe as mp
 def finger_direction():
     mp_drawing = mp.solutions.drawing_utils
     mp_hands = mp.solutions.hands
-    cap = cv2.VideoCapture(0)  # カメラを開く
+    cap = cv2.VideoCapture(0)
     with mp_hands.Hands(
             max_num_hands=2,
             min_detection_confidence=0.5,
@@ -48,7 +48,3 @@ def finger_direction():
 
     cap.release()
     cv2.destroyAllWindows()
-
-gen = finger_direction()
-for direction in gen:
-    print(direction)

@@ -1,1 +1,0 @@
-from finger_direction import *
