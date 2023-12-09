@@ -8,14 +8,18 @@ def finger_direction(camera_id=0):
     cap = cv2.VideoCapture(camera_id)
     with mp_hands.Hands(
             max_num_hands=2,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5) as hands:
+            min_detection_confidence=0.6,
+            min_tracking_confidence=0.6) as hands:
         while True:
             success, image = cap.read()
             if not success:
                 print("Ignoring empty camera frame.")
                 continue
-
+            
+            image_copy = image
+            image_copy = cv2.rectangle(image_copy,(160, 100), (520, 380), (143, 195, 31), 3)
+            
+            image = image[100 : 380, 160 : 520]
             image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
             image.flags.writeable = False
             results = hands.process(image)
@@ -42,7 +46,7 @@ def finger_direction(camera_id=0):
 
             yield direction
 
-            cv2.imshow('MediaPipe Hands', image)
+            cv2.imshow('MediaPipe Hands', cv2.flip(image_copy, 1))
             if cv2.waitKey(5) & 0xFF == 27:
                 break
 
